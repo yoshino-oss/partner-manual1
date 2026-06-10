@@ -563,7 +563,6 @@ fetch('data.json')
     render();
   })
   .catch(() => {
-    // fallback: show error
     document.getElementById('qaList').innerHTML = '<p style="padding:20px;color:red;">データの読み込みに失敗しました。</p>';
   });
 
@@ -680,3 +679,7 @@ function toggleSidebar() {
 }
 
 // Init handled by fetch callback above
+
+</script>
+</body>
+</html>
