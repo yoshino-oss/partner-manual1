@@ -573,7 +573,9 @@ async function login() {
     }
     const data = await res.json();
     fileSha = data.sha;
-    const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    const binaryStr = atob(data.content.replace(/\n/g, ''));
+    const bytes = Uint8Array.from(binaryStr, c => c.charCodeAt(0));
+    const content = JSON.parse(new TextDecoder('utf-8').decode(bytes));
     qaData = content.qa || [];
     token = pat;
     localStorage.setItem('admin_pat', pat);
